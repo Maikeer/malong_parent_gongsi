@@ -25,6 +25,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
         for (ProductCategory productCategory:productCategories) {
                 EasyUITree easyUITree=new EasyUITree(productCategory.getId(),productCategory.getName(),(productCategory.getParentId()==0
             ?"closed":"open"));
+            easyUITree.setParentId(productCategory.getParentId());
             easyUITrees.add(easyUITree);
         }
 
@@ -39,6 +40,25 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
         productCategoryMapper.insert(productCategory);
         ResponseJsonResult responseJsonResult=new ResponseJsonResult();
         responseJsonResult.setMsg(productCategory.getId()+"");
+        return responseJsonResult;
+    }
+
+    @Override
+    public ResponseJsonResult deleteCategory(short parentId, short id) {
+        ProductCategoryExample productCategoryExample=new ProductCategoryExample();
+        ProductCategoryExample.Criteria criteria = productCategoryExample.createCriteria();
+
+        if(parentId==0) {
+            criteria.andIdEqualTo(id);
+            ProductCategoryExample.Criteria criteria1 = productCategoryExample.createCriteria();
+            criteria1.andParentIdEqualTo(id);
+            productCategoryExample.or(criteria1);
+        }else{
+            criteria.andIdEqualTo(id);
+        }
+        int i = productCategoryMapper.deleteByExample(productCategoryExample);
+        ResponseJsonResult responseJsonResult=new ResponseJsonResult();
+        responseJsonResult.setMsg("sucess");
         return responseJsonResult;
     }
 }

@@ -75,7 +75,15 @@
     };
     function remove() {
         var selected = $('#productCategory').tree('getSelected');
-        $('#productCategory').tree('remove',selected.target)
+        $('#productCategory').tree('remove',selected.target);
+        $.post("/product_category/del",{parentId:selected.parentId,id:selected.id},function(data){
+            var status=data.status;
+            if(status==200){
+
+            }else{
+                $.message.alert("添加分类失败");
+            }
+        });
     }
 </script>
 </body>

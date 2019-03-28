@@ -8,4 +8,5 @@ import java.util.List;
 public interface ProductCategoryService {
     List<EasyUITree> findProductCategoryListByParentId(short parentid);
     ResponseJsonResult addCategory(short parentId,String name);
+    ResponseJsonResult deleteCategory(short parentId,short id);
 }

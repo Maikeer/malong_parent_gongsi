@@ -4,7 +4,7 @@ public class EasyUITree {
     private int id;
     private  String text;
     private  String state;
-
+    private short parentId;
     public EasyUITree(int id, String text, String state) {
         this.id = id;
         this.text = text;
@@ -33,5 +33,15 @@ public class EasyUITree {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+
+
+    public short getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(short parentId) {
+        this.parentId = parentId;
     }
 }
