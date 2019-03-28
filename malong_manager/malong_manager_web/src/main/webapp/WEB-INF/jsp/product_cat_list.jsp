@@ -32,7 +32,26 @@
                 });
             },
             onAfterEdit: function(node){
-                alert("onAfterEdit");
+               var id= node.id;
+               if(id==0){
+                   $.post("/product_category/add",{parentId:node.parentId,name:node.text},function(data){
+                       var status=data.status;
+                       if(status==200){
+                           if (node){
+                               $('#productCategory').tree('update', {
+                                   target: node.target,
+                                   id:data.msg
+                               });
+                           }
+                       }else{
+                            $.message.alert("添加分类失败");
+                       }
+                   });
+
+               }else{
+                   alert("rename onAfterEdit");
+               }
+
             }
         });
     })
@@ -43,9 +62,12 @@
             data: [{
                 id: 0,
                 parentId:selected.id,
+                checked:true,
                 text: '新建分类'
             }]
         });
+        var node = $('#productCategory').tree('find', 0);
+        $('#productCategory').tree('select', node.target).tree('beginEdit',node.target);
     };
     function rename() {
         var selected = $('#productCategory').tree('getSelected');

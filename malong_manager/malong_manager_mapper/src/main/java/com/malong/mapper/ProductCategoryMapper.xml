@@ -108,7 +108,7 @@
         </if>
     </delete>
 
-    <insert id="insert" parameterType="com.malong.pojo.ProductCategory" >
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.malong.pojo.ProductCategory" >
         insert into product_category (id, name, sordorder, 
             status, parent_id)
         values (#{id,jdbcType=SMALLINT}, #{name,jdbcType=VARCHAR}, #{sordorder,jdbcType=SMALLINT}, 

@@ -21,17 +21,17 @@ public class ProductCategory {
     /**
      * 排序
      */
-    private Short sordorder;
+    private Short sordorder=999;
 
     /**
      * 0不删除 1删除
      */
-    private Byte status;
+    private Byte status=0;
 
     /**
      * 父级的id 0 代表父级
      */
-    private Short parentId;
+    private Short parentId=0;
 
     public Short getId() {
         return id;

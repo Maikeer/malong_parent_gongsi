@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pojo.EasyUITree;
+import pojo.ResponseJsonResult;
 
 import java.util.List;
 
@@ -23,5 +24,14 @@ public class ProductCategoryController {
     public List getProductCategoryByParentId(@RequestParam(value = "id",defaultValue = "0") short parentid){
         List<EasyUITree> productCategoryListByParentId = productCategoryService.findProductCategoryListByParentId(parentid);
         return productCategoryListByParentId;
+    }
+    /**
+     * 添加分类
+     */
+    @RequestMapping("/add")
+    @ResponseBody
+    public ResponseJsonResult addCategory(short parentId, String name){
+        ResponseJsonResult responseJsonResult = productCategoryService.addCategory(parentId, name);
+        return responseJsonResult;
     }
 }

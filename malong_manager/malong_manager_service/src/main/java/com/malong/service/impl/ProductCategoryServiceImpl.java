@@ -7,6 +7,7 @@ import com.malong.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pojo.EasyUITree;
+import pojo.ResponseJsonResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,5 +29,16 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
         }
 
         return easyUITrees;
+    }
+
+    @Override
+    public ResponseJsonResult addCategory(short parentId, String name) {
+        ProductCategory productCategory=new ProductCategory();
+        productCategory.setParentId(parentId);
+        productCategory.setName(name);
+        productCategoryMapper.insert(productCategory);
+        ResponseJsonResult responseJsonResult=new ResponseJsonResult();
+        responseJsonResult.setMsg(productCategory.getId()+"");
+        return responseJsonResult;
     }
 }
