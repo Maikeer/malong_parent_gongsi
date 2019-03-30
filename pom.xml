@@ -149,13 +149,13 @@
             </dependency>
 
             <dependency>
-                <groupId>com.json</groupId>
+                <groupId>org.json</groupId>
                 <artifactId>json</artifactId>
                 <version>${json.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.baidu</groupId>
+                <groupId>com.baidu.ueditor</groupId>
                 <artifactId>ueditor</artifactId>
                 <version>${ueditor.version}</version>
             </dependency>
