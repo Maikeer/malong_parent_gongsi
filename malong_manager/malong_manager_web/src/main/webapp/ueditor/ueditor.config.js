@@ -20,8 +20,9 @@
      * window.UEDITOR_HOME_URL = "/xxxx/xxxx/";
      */
 
-    // var URL = window.UEDITOR_HOME_URL || getUEBasePath();
-	var URL="ueditor/";
+    var URL = window.UEDITOR_HOME_URL || getUEBasePath();
+	// var URL="ueditor/";
+	alert("================================"+URL);
     /**
      * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。
      */
