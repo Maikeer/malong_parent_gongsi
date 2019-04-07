@@ -18,6 +18,15 @@
 <context:component-scan base-package="com.malong.controller"></context:component-scan>
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
+    <!--freemarker的配置在前，当当请求发现/WEB-INF/ftl/没有的时候，就会去/WEB-INF/jsp/查找-->
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/ftl/"/>
+    </bean>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".ftl"/>
+        <property name="contentType" value="text/html; charset=UTF-8"/>
+    </bean>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp"/>
