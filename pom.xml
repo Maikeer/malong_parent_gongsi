@@ -16,6 +16,7 @@
         <module>malong_sso</module>
         <module>malong_redis</module>
         <module>malong_search</module>
+        <module>malong_portal</module>
     </modules>
     <!-- 集中定义版本号 -->
     <properties>
